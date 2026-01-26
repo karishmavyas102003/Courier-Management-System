@@ -1,0 +1,120 @@
+{% load  static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transworld</title>
+</head>
+<style>
+   /* Hero Section Styling */
+.hero-section {
+    position: relative;
+    height: 80vh; /* Screen ni 80% height */
+    background-image: url("/static/img/shp.jpg"); /* Tamara dark leaf vali image */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+/* Image ne jakhi karva mate overlay */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* 0.5 etle transparency */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* Services Cards (Sketch mujab) */
+.services-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 50px;
+    background-color: #f4f4f4;
+}
+
+.service-card {
+    color: black;
+    background: #7b8bb9;
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.service-card:hover {
+    transform: translateY(-10px); /* Hover effect */
+}
+
+.service-card img {
+    width: 80px;
+    margin-bottom: 15px;
+}
+
+.btn-start {
+    background-color: #f39c12;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transform: translateY(-10px);
+} 
+.btn-cl{
+    background-color: #7b8bb9;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transform: translateY(-10px);
+}
+
+</style>
+<body>
+    <div class="hero-section">
+    <div class="overlay"></div>
+    <div class="hero-content">
+        <h1>Welcome to Transworld</h1>
+        <p>Fast, Safe & Reliable Shipping Services</p>
+        <button class="btn-start">BOOK NOW...</button>
+        <a href="{% url 'register' %}">
+          <button class="btn-cl">REGISTER</button></a>
+          <a href="{% url 'login' %}">
+          <button class="btn-cl">LOGIN</button></a>
+    </div>
+</div>
+
+<div class="services-container">
+    <div class="service-card">
+        <img src="/static/img/plane.jpg" alt="Plane">
+        <h3>By Air</h3>
+    </div>
+    <div class="service-card">
+        <img src="/static/img/ship.jpg" alt="Ship">
+        <h3>By Ship</h3>
+    </div>
+    <div class="service-card">
+        <img src="/static/img/road.jpg" alt="Road">
+         
+        <h3>By Road</h3>
+    </div>
+</div>
+</body>
+</html>

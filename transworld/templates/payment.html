@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Select Payment Method</title>
+
+    <style>
+       body {
+              margin: 0;
+             font-family: 'Montserrat', sans-serif;
+             overflow: hidden;
+             background: linear-gradient(135deg, #ffffff, #2e4074, #fafafa, #2e4074, #ffffff, #2e4074);
+             background-size: 400% 400%;
+             animation: gradientAnimation 15s ease infinite;
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             min-height: 100vh;
+
+        }
+
+        .container {
+            width: 420px;
+            margin: 80px auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        label:hover {
+            background: #f0f7ff;
+            border-color: #4a90e2;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #4a90e2;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        button:hover {
+            background: #357abd;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Select Payment Method</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <label>
+            <input type="radio" name="method" value="COD" required>
+            Cash on Delivery (COD)
+        </label>
+
+        <label>
+            <input type="radio" name="method" value="UPI">
+            UPI Payment
+        </label>
+
+        <label>
+            <input type="radio" name="method" value="QR">
+            QR Code Payment
+        </label>
+
+        <label>
+            <input type="radio" name="method" value="PAYPAL">
+            PayPal
+        </label>
+
+        <label>
+            <input type="radio" name="method" value="GPAY">
+            Google Pay
+        </label>
+
+        <button type="submit">Proceed</button>
+    </form>
+</div>
+
+</body>
+</html>

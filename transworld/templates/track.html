@@ -1,0 +1,24 @@
+<div class="track-container">
+    <h2>Track Your Courier</h2>
+
+    <form method="POST" class="track-form">
+        {% csrf_token %}
+        <input type="text" name="tracking_id" placeholder="Enter Tracking ID" required>
+        <button type="submit">Track</button>
+    </form>
+
+    {% if error %}
+        <p class="error-msg">{{ error }}</p>
+    {% endif %}
+
+    {% if courier %}
+        <div class="result-box">
+            <h3>Status: <span>{{ courier.status }}</span></h3>
+
+            <h4>Tracking History</h4>
+            {% for h in history %}
+                <p>{{ h.location }} – {{ h.date }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
