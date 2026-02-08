@@ -1,34 +1,149 @@
+{% extends 'base.html' %}
+
+{% block title %}AboutUs{% endblock %}
+
+{% block  content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AboutUs</title>
+    <title>About Us | Transworld Courier Service</title>
+    <style>
+        body{
+            margin:0;
+            font-family: 'Segoe UI', sans-serif;
+            background:#f4f6f9;
+            color:#333;
+        }
+        .hero{
+            background:linear-gradient(120deg,#003973,#E5E5BE);
+            color:#fff;
+            padding:70px 20px;
+            text-align:center;
+        }
+        .hero h1{
+            font-size:42px;
+            margin-bottom:10px;
+        }
+        .hero p{
+            font-size:18px;
+            max-width:800px;
+            margin:auto;
+        }
+        .container{
+            max-width:1100px;
+            margin:auto;
+            padding:50px 20px;
+        }
+        .card{
+            background:#fff;
+            padding:30px;
+            border-radius:12px;
+            box-shadow:0 8px 25px rgba(0,0,0,0.1);
+            margin-bottom:30px;
+        }
+        .card h2{
+            color:#003973;
+            margin-bottom:15px;
+        }
+        .card p{
+            line-height:1.8;
+            font-size:16px;
+        }
+        .features{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+            gap:20px;
+        }
+        .feature{
+            background:#eef3ff;
+            padding:25px;
+            border-radius:10px;
+            text-align:center;
+        }
+        .feature h3{
+            color:#003973;
+            margin-bottom:10px;
+        }
+        .footer{
+            background:#003973;
+            color:#fff;
+            text-align:center;
+            padding:15px;
+            font-size:14px;
+        }
+    </style>
 </head>
-<style>
-    body{
-      margin: 0;
-      font-family: monospace;
-      overflow: hidden;
-      background: linear-gradient(135deg, #1c2b5a,  #394b81, #727b96, #ffffff, #ffffff);
-      background-size: 400%  400%;
-      animation:  gradientAnimation 15s ease infinite;
-      display: flex;
-      justify-content: center;
-      align-items: self-end;
-      min-width: 100vh;
-    
-}
-    
-    .h1{
-        justify-content: center;
-        
-        
-    }
-</style>
 <body>
-    <h1>About Us</h1>
-    <p>welcome to our website and  thank you for wisiting our website</p>
-    
+
+<!-- HERO SECTION -->
+<div class="hero">
+    <h1>About Transworld Courier Service</h1>
+    <p>
+        Fast • Reliable • Secure Delivery Solutions
+    </p>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+
+    <div class="card">
+        <h2>Who We Are</h2>
+        <p>
+            <strong>Transworld Courier Service</strong> is a trusted name in courier and logistics solutions.
+            We provide fast, safe and reliable delivery services for documents, parcels and commercial shipments.
+            Our focus is on customer satisfaction and timely delivery across cities and regions.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>Our Mission</h2>
+        <p>
+            Our mission is to deliver every parcel with care, speed and accuracy.
+            We aim to connect people and businesses through dependable courier services,
+            ensuring every shipment reaches its destination on time.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>Why Choose Us</h2>
+        <div class="features">
+            <div class="feature">
+                <h3>🚚 Fast Delivery</h3>
+                <p>Quick and efficient courier solutions.</p>
+            </div>
+            <div class="feature">
+                <h3>📦 Safe Handling</h3>
+                <p>Your parcel is handled with full safety.</p>
+            </div>
+            <div class="feature">
+                <h3>📍 Tracking</h3>
+                <p>Real-time shipment tracking system.</p>
+            </div>
+            <div class="feature">
+                <h3>🤝 Trusted Service</h3>
+                <p>Reliable service with customer satisfaction.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Our Commitment</h2>
+        <p>
+            At Transworld Courier Service, we are committed to providing high-quality logistics solutions
+            with transparency, reliability and professionalism.
+            Your delivery is our responsibility.
+        </p>
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+    © 2026 Transworld Courier Service. All Rights Reserved.
+</div>
+
 </body>
 </html>
+
+{%  endblock %}

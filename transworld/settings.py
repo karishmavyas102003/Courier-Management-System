@@ -82,6 +82,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+        
     }
 }
 
@@ -126,8 +127,8 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",  # Add the path to your static files directory here
 ]
 
-
-
+MEDIA_URL  =   '/media/'
+MEDIA_ROOT =  BASE_DIR  /'media'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 

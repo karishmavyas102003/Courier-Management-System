@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+
+{% block title %}AboutUs{% endblock %}
+
+{% block  content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Our Services | Transworld Courier Service</title>
+
+    <style>
+        body{
+            margin:0;
+            font-family:'Segoe UI', sans-serif;
+            background:#f4f6f9;
+            color:#333;
+        }
+
+        /* HERO */
+         .hero{
+            background:linear-gradient(120deg,#003973,#E5E5BE);
+            color:#fff;
+            padding:70px 20px;
+            text-align:center;
+        }
+        .hero h1{
+            font-size:42px;
+            margin-bottom:10px;
+        }
+        .hero p{
+            font-size:18px;
+            opacity:0.95;
+        }
+
+        /* SERVICES */
+        .container{
+            max-width:1200px;
+            margin:auto;
+            padding:60px 20px;
+        }
+
+        .services{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+            gap:30px;
+        }
+
+        .service-card{
+            background:white;
+            padding:30px;
+            border-radius:14px;
+            box-shadow:0 10px 30px rgba(0,0,0,0.1);
+            transition:0.3s;
+            text-align:center;
+        }
+
+        .service-card:hover{
+            transform:translateY(-8px);
+            box-shadow:0 18px 40px rgba(0,0,0,0.18);
+        }
+
+        .icon{
+            font-size:40px;
+            margin-bottom:15px;
+        }
+
+        .service-card h3{
+            color:#003973;
+            margin-bottom:10px;
+        }
+
+        .service-card p{
+            font-size:15px;
+            line-height:1.6;
+        }
+
+        /* BACK BUTTON */
+        .back{
+            text-align:center;
+            margin-top:50px;
+        }
+
+        .back a{
+            text-decoration:none;
+            background:#003973;
+            color:white;
+            padding:12px 28px;
+            border-radius:8px;
+            font-size:16px;
+        }
+
+        .back a:hover{
+            background:#002a52;
+        }
+
+        /* FOOTER */
+        .footer{
+            background:#003973;
+            color:white;
+            text-align:center;
+            padding:15px;
+            font-size:14px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+    <h1>Our Services</h1>
+    <p>Fast, Reliable & Secure Courier Solutions</p>
+</div>
+
+<!-- SERVICES -->
+<div class="container">
+    <div class="services">
+
+        <div class="service-card">
+            <div class="icon">📦</div>
+            <h3>Domestic Courier</h3>
+            <p>We provide fast and secure domestic courier services across India with real-time tracking.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="icon">✈️</div>
+            <h3>International Shipping</h3>
+            <p>Send parcels worldwide with safe handling, customs support, and timely delivery.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="icon">🚚</div>
+            <h3>Express Delivery</h3>
+            <p>Urgent shipments delivered quickly with our priority express courier services.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="icon">🏢</div>
+            <h3>Corporate Logistics</h3>
+            <p>End-to-end logistics solutions for businesses, documents, and bulk shipments.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="icon">📄</div>
+            <h3>Document Courier</h3>
+            <p>Safe and confidential delivery of important documents with tracking facility.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="icon">📍</div>
+            <h3>Real-Time Tracking</h3>
+            <p>Track your shipment anytime, anywhere with our easy tracking system.</p>
+        </div>
+
+    </div>
+
+    <!-- BACK BUTTON -->
+    <div class="back">
+        <a href="{% url 'home' %}">⬅ Back to Home</a>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+    © 2026 Transworld Courier Service. All Rights Reserved.
+</div>
+
+</body>
+</html>
+{%  endblock %}

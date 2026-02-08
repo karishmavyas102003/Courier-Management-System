@@ -24,17 +24,23 @@ from main import views   # app name = main (photo pramane)
 
 
 urlpatterns = [
-     path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls),
+    # path('',include(main.urls)),
     path('', views.home,name='home'),
     path('login/', views.home_view, name='login'),
     path('register/', views.registerForm, name='register'),
     path('AboutUs/', views.Aboutus, name='Aboutus'),
     path('track/', views.track_courier, name='track'),
-    path('register/', views.register, name='register'),
     path('payment/', views.select_payment, name='payment'),
-    
+    path('booking/', views.booking, name='booking'),
+    path('feedback/', views.feedback, name='feedback'),
+    path('contact/',views.contact, name='contact'),
+    path('services/',views.services, name='servises'),
     
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     
 
 

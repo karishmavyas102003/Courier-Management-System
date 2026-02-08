@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+
+{% block title %}AboutUs{% endblock %}
+
+{% block  content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Us | Transworld Courier Service</title>
+    <style>
+        body{
+            margin:0;
+            font-family:'Segoe UI', sans-serif;
+            background:#f4f6f9;
+            color:#333;
+        }
+        .hero{
+            background:linear-gradient(120deg,#003973,#E5E5BE);
+            color:#fff;
+            padding:70px 20px;
+            text-align:center;
+        }
+        .hero h1{
+            font-size:42px;
+            margin-bottom:10px;
+        }
+        .hero p{
+            font-size:18px;
+        }
+        .container{
+            max-width:1100px;
+            margin:auto;
+            padding:50px 20px;
+        }
+        .contact-box{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+            gap:30px;
+        }
+        .card{
+            background:#fff;
+            padding:30px;
+            border-radius:12px;
+            box-shadow:0 8px 25px rgba(0,0,0,0.1);
+        }
+        .card h2{
+            color:#003973;
+            margin-bottom:15px;
+        }
+        .info p{
+            margin:10px 0;
+            font-size:16px;
+        }
+        .info span{
+            font-weight:600;
+        }
+        form input, form textarea{
+            width:100%;
+            padding:12px;
+            margin-bottom:15px;
+            border-radius:8px;
+            border:1px solid #ccc;
+            font-size:15px;
+        }
+        form textarea{
+            resize:none;
+            height:120px;
+        }
+        form button{
+            background:#003973;
+            color:#fff;
+            border:none;
+            padding:12px 25px;
+            font-size:16px;
+            border-radius:8px;
+            cursor:pointer;
+        }
+        form button:hover{
+            background:#002a52;
+        }
+        .footer{
+            background:#003973;
+            color:#fff;
+            text-align:center;
+            padding:15px;
+            font-size:14px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+    <h1>Contact Us</h1>
+    <p>We are here to help you – Get in touch with us</p>
+</div>
+
+<!-- CONTENT -->
+<div class="container">
+    <div class="contact-box">
+
+        <!-- CONTACT INFO -->
+        <div class="card info">
+            <h2>Get In Touch</h2>
+            <p><span>Company:</span> Transworld Courier Service</p>
+            <p><span>Address:</span> Main Road, City Center, India</p>
+            <p><span>Phone:</span> +91 98765 43210</p>
+            <p><span>Email:</span> transworldcourier@gmail.com</p>
+            <p><span>Working Hours:</span> Mon – Sat (9:00 AM – 7:00 PM)</p>
+        </div>
+
+        <!-- CONTACT FORM -->
+        <div class="card">
+            <h2>Send Us a Message</h2>
+            <form method="POST">
+                {% csrf_token %}
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <input type="text" name="mobile" placeholder="Mobile Number" required>
+                <textarea name="message" placeholder="Your Message"></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+    © 2026 Transworld Courier Service. All Rights Reserved.
+</div>
+
+</body>
+</html>
+{%  endblock %}

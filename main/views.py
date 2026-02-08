@@ -1,15 +1,6 @@
 
 
-# Create your views here.
-# # myapp/views.py
-# from django.shortcuts import render
-# from django.http import HttpRequest
 
-# def loginpage(request: HttpRequest):
-#     # The render function takes the request object, the template name, 
-#     # and an optional dictionary of context data.
-#     return render(request, 'meet.html')
-# myapp/views.py
 from django.shortcuts import render
 from django.http import HttpRequest
 
@@ -74,6 +65,7 @@ def register(request):
         form = UserCreationForm()
     return render(request, 'register.html', {'form': form})
 
+
 # લોગિન માટે
 def login(request):
     if request.method == 'POST':
@@ -85,7 +77,7 @@ def login(request):
     else:
         form = AuthenticationForm()
     return render(request, 'login.html', {'form': form})
-
+ 
 
 
 
@@ -111,3 +103,149 @@ def select_payment(request):
             return render(request, "gpay.html")
 
     return render(request, "payment.html")
+
+
+
+from django.shortcuts import render
+from .models import Tracking
+
+def track_order(request):
+    tracking_data = None
+    error = None
+
+    if request.method == "POST":
+        track_id = request.POST.get("tracking_id")
+        try:
+            tracking_data = Tracking.objects.get(tracking_id=track_id)
+        except Tracking.DoesNotExist:
+            error = "Invalid Tracking ID"
+
+    return render(request, "track.html", {
+        "tracking_data": tracking_data,
+        "error": error
+    })
+
+
+from django.shortcuts import render, redirect
+from .models import Booking
+
+def booking(request):
+    if request.method == "POST":
+        Booking.objects.create(
+            name=request.POST['name'],
+            email=request.POST['email'],
+            mobile=request.POST['mobile'],
+            aadhar_number=request.POST['aadhar'],
+            aadhar_photo=request.FILES.get('aadhar_photo'),
+            pickup_location=request.POST['pickup'],
+            drop_location=request.POST['drop']
+        )
+        return redirect('home')
+
+    return render(request, 'booking.html')
+
+
+
+from django.shortcuts import render, redirect
+from .models import UserRegister
+
+def registerForm(request):
+    if request.method == "POST":
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+
+        user = UserRegister(
+            username=username,
+            email=email,
+            password=password
+        )
+        user.save()   # 👈 aa line vagar DB ma store nahi thay
+
+        return redirect('login')
+
+    return render(request, 'register.html')
+
+def home_view(request):
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = UserRegister.objects.filter(
+            username=username,
+            password=password
+        ).first()
+
+        if user:
+            request.session['user_id'] = user.id
+            return redirect('home')
+        else:
+            return render(request, 'login.html', {'error': 'Invalid credentials'})
+
+    return render(request, 'login.html')
+    
+
+from django.shortcuts import render, redirect
+from .models import Feedback
+
+def home(request):
+    context = {
+        'trust_image': {'url': '/media/trust.jpg'},
+        'trust_points': [
+            '10+ Years of Experience',
+            'Safe & Reliable Shipping',
+            '24/7 Customer Support'
+        ],
+        'contact': {
+            'phone': '+91 98765 43210',
+            'email': 'support@transworld.com',
+            'address': 'India'
+        }
+    }
+    return render(request, 'home.html', context)
+
+
+def feedback(request):
+    if request.method == 'POST':
+        Feedback.objects.create(
+            name=request.POST['name'],
+            email=request.POST['email'],
+            message=request.POST['message']
+        )
+        return redirect('home')
+
+from django.shortcuts import render
+
+def contact(request):
+    return  render(request,'Contact_us.html')
+
+
+    from django.shortcuts import render, redirect
+from .models import ContactMessage
+
+def contact(request):
+    if request.method == "POST":
+        ContactMessage.objects.create(
+            name=request.POST.get('name'),
+            email=request.POST.get('email'),
+            mobile=request.POST.get('mobile'),
+            message=request.POST.get('message')
+        )
+        return redirect('contact')  # page reload
+
+    return render(request, 'contact_us.html')
+
+from .models import Shipment
+
+def track(request):
+    shipment = None
+    if request.method == "POST":
+        tid = request.POST.get('tracking_id')
+        shipment = Shipment.objects.filter(tracking_id=tid).first()
+
+    return render(request, 'track_result.html', {'shipment': shipment})
+
+from django.shortcuts import render
+
+def services(request):
+    return render(request, 'services.html')

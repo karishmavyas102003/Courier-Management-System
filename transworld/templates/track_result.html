@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{% block title %}AboutUs{% endblock %}
+
+{% block  content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tracking Result | Transworld Courier</title>
+
+    <style>
+        body{
+            margin:0;
+            font-family:'Segoe UI', sans-serif;
+            background:linear-gradient(120deg,#003973,#E5E5BE);
+            min-height:100vh;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+        }
+
+        .result-card{
+            background:#fff;
+            width:420px;
+            padding:30px;
+            border-radius:14px;
+            box-shadow:0 15px 35px rgba(0,0,0,0.25);
+            text-align:center;
+            animation:fadeIn 0.6s ease;
+        }
+
+        h2{
+            color:#003973;
+            margin-bottom:25px;
+        }
+
+        .info{
+            text-align:left;
+            margin:15px 0;
+            font-size:16px;
+        }
+
+        .info b{
+            color:#003973;
+        }
+
+        .status{
+            margin-top:20px;
+            padding:12px;
+            border-radius:8px;
+            font-weight:600;
+            text-align:center;
+        }
+
+        .success{
+            background:#e7f6ec;
+            color:#1e7e34;
+            border:1px solid #b6e1c3;
+        }
+
+        .error{
+            background:#fdecea;
+            color:#a71d2a;
+            border:1px solid #f5c6cb;
+        }
+
+        .back-btn{
+            display:inline-block;
+            margin-top:25px;
+            padding:10px 22px;
+            background:#003973;
+            color:#fff;
+            text-decoration:none;
+            border-radius:8px;
+            font-size:15px;
+        }
+
+        .back-btn:hover{
+            background:#002a52;
+        }
+
+        @keyframes fadeIn{
+            from{
+                opacity:0;
+                transform:translateY(20px);
+            }
+            to{
+                opacity:1;
+                transform:translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="result-card">
+    <h2>Tracking Result</h2>
+
+    {% if shipment %}
+        <div class="info"><b>Tracking ID:</b> {{ shipment.tracking_id }}</div>
+        <div class="info"><b>Status:</b> {{ shipment.status }}</div>
+        <div class="info"><b>Current Location:</b> {{ shipment.location }}</div>
+
+        <div class="status success">
+            📦 Your shipment is on the way
+        </div>
+    {% else %}
+        <div class="status error">
+            ❌ No courier found for this Tracking ID
+        </div>
+    {% endif %}
+
+    <a href="{% url 'home' %}" class="back-btn">⬅ Back to Home</a>
+</div>
+
+</body>
+</html>
+{%  endblock %}

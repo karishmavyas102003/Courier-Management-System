@@ -1,4 +1,4 @@
-{% load  static %}
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,115 +6,349 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transworld</title>
-</head>
-<style>
-   /* Hero Section Styling */
-.hero-section {
-    position: relative;
-    height: 80vh; /* Screen ni 80% height */
-    background-image: url("/static/img/shp.jpg"); /* Tamara dark leaf vali image */
-    background-size: cover;
-    background-position: center;
+    <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+        }
+        /* Navbar Styling */
+.navbar {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    color: white;
-    text-align: center;
-}
-
-/* Image ne jakhi karva mate overlay */
-.overlay {
-    position: absolute;
+    background-color: #1e3c72; /* ડાર્ક બ્લુ કલર */
+    padding: 15px 50px;
+    position: sticky; /* પેજ સ્ક્રોલ કરો તો પણ મેનુ ઉપર જ રહેશે */
     top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* 0.5 etle transparency */
-    z-index: 1;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-.hero-content {
-    position: relative;
-    z-index: 2;
+.navbar .logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 1px;
 }
 
-/* Services Cards (Sketch mujab) */
-.services-container {
+.nav-links {
+    list-style: none;
     display: flex;
-    justify-content: space-around;
-    padding: 50px;
-    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
 }
 
-.service-card {
-    color: black;
-    background: #7b8bb9;
-    padding: 20px;
-    width: 250px;
-    text-align: center;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+.nav-links li {
+    margin-left: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 17px;
+    font-weight: 500;
     transition: 0.3s;
 }
 
-.service-card:hover {
-    transform: translateY(-10px); /* Hover effect */
+.nav-links a:hover {
+    color: #f39c12; /* હોવર કરવા પર ઓરેન્જ કલર થશે */
 }
 
-.service-card img {
-    width: 80px;
-    margin-bottom: 15px;
+/* મોબાઈલ માટે રિસ્પોન્સિવ (જો જરૂર હોય તો) */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 15px 20px;
+    }
+    .nav-links li {
+        margin-left: 15px;
+    }
+    .nav-links a {
+        font-size: 15px;
+    }
 }
 
-.btn-start {
-    background-color: #f39c12;
-    color: white;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 5px;
-    font-size: 18px;
-    cursor: pointer;
-    transform: translateY(-10px);
-} 
-.btn-cl{
-    background-color: #7b8bb9;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 5px;
-    font-size: 18px;
-    cursor: pointer;
-    transform: translateY(-10px);
-}
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            height: 90vh;
+            background-image: url("{% static 'img/shp.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
 
-</style>
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        /* Buttons */
+        .btn-group {
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            margin: 5px;
+        }
+
+        .btn-start { background-color: #f39c12; color: white; }
+        .btn-cl { background-color: #1e3c72; color: white; }
+        .btn:hover { opacity: 0.8; transform: scale(1.05); }
+
+        /* Services Section */
+        .section-title {
+            text-align: center;
+            padding-top: 50px;
+            color: #1e3c72;
+            font-size: 2rem;
+        }
+
+        .services-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 40px 20px;
+            flex-wrap: wrap;
+        }
+
+        .service-card {
+            background: white;
+            padding: 30px;
+            width: 280px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: 0.3s;
+            border-top: 5px solid #1e3c72;
+        }
+
+        .service-card:hover { transform: translateY(-10px); }
+
+        .service-card img {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            margin-bottom: 15px;
+        }
+
+        /* Trust Section */
+        .trust-section {
+            padding: 60px 10%;
+            background: #ffffff;
+        }
+
+        .trust-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .trust-image img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .trust-content {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+        }
+
+        .trust-content h2 { color: #1e3c72; font-size: 2.2rem; }
+        .trust-content p { font-size: 1.1rem; color: #555; margin: 10px 0; }
+
+        /* Feedback Form */
+        .feedback-section {
+            padding: 60px 20px;
+            background: #f4f7fb;
+        }
+
+        .feedback-box {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 500px;
+            margin: auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .feedback-box h2 { text-align: center; color: #1e3c72; margin-bottom: 25px; }
+
+        .feedback-box input, .feedback-box textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+        }
+
+        .feedback-box button {
+            width: 100%;
+            padding: 15px;
+            background: #1e3c72;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .feedback-box button:hover { background: #f39c12; }
+
+
+
+    .track-box{
+    background:white;
+    padding:30px;
+    width:350px;
+    margin:100px auto;
+    border-radius:12px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+    text-align:center;
+}
+.track-box input{
+    width:100%;
+    padding:12px;
+    margin:15px 0;
+    border-radius:6px;
+    border:1px solid #ccc;
+}
+.track-box button{
+    width:100%;
+    padding:12px;
+    background:#003973;
+    color:white;
+    border:none;
+    border-radius:6px;
+}
+.icon{
+            font-size:40px;
+            margin-bottom:15px;
+        }
+
+
+
+    </style>
+</head>
 <body>
-    <div class="hero-section">
+<nav class="navbar">
+    <div class="logo">Transworld</div>
+    <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="services">Services</a></li>
+        <li><a href="AboutUs">About</a></li>
+        <li><a href="contact">Contact</a></li>
+    </ul>
+</nav>
+<div class="hero-section">
     <div class="overlay"></div>
     <div class="hero-content">
-        <h1>Welcome to Transworld</h1>
-        <p>Fast, Safe & Reliable Shipping Services</p>
-        <button class="btn-start">BOOK NOW...</button>
-        <a href="{% url 'register' %}">
-          <button class="btn-cl">REGISTER</button></a>
-          <a href="{% url 'login' %}">
-          <button class="btn-cl">LOGIN</button></a>
+        <h1>Welcome to Transworld Service</h1>
+        <p>Your Reliable Partner in Global Logistics</p>
+        <div class="btn-group">
+            <a href="{% url 'booking' %}" class="btn btn-start">BOOK NOW</a>
+            <a href="{% url 'register' %}" class="btn btn-cl">REGISTER</a>
+            <a href="{% url 'login' %}" class="btn btn-cl">LOGIN</a>
+        </div>
     </div>
 </div>
 
+<h2 class="section-title">Our Services</h2>
 <div class="services-container">
     <div class="service-card">
-        <img src="/static/img/plane.jpg" alt="Plane">
+        <div class="icon">✈️</div>
         <h3>By Air</h3>
+        <p>Fastest delivery for your urgent cargo.</p>
     </div>
     <div class="service-card">
-        <img src="/static/img/ship.jpg" alt="Ship">
+        <div class="icon">🚢</div>
         <h3>By Ship</h3>
+        <p>Cost-effective sea freight solutions.</p>
     </div>
     <div class="service-card">
-        <img src="/static/img/road.jpg" alt="Road">
-         
+      <div class="icon">🚚</div>
         <h3>By Road</h3>
+        <p>Safe and secure inland transportation.</p>
     </div>
 </div>
+
+<section class="trust-section">
+    <div class="trust-container">
+        <div class="trust-image">
+            <img src="{% static 'img/shp.jpg' %}" alt="Trusted Shipping">
+        </div>
+        <div class="trust-content">
+            <h2>Why Customers Trust Us</h2>
+            <p>✔ 10+ Years of Experience</p>
+            <p>✔ Safe & Reliable Shipping</p>
+            <p>✔ 24/7 Customer Support</p>
+            
+            <h3>Contact Us</h3>
+            <p>📞 +91 000000000</p>
+            <p>📧 support@transworld.com</p>
+            <p>📍 India</p>
+        </div>
+    </div>
+</section>
+
+<div class="feedback-section">
+    <div class="feedback-box">
+        <h2>Customer Feedback</h2>
+        <form method="POST" action="{% url 'feedback' %}">
+            {% csrf_token %}
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" rows="4" placeholder="Your Feedback" required></textarea>
+            <button type="submit">Submit Feedback</button>
+        </form>
+    </div>
+</div>
+<div class="track-box">
+    <h2>Track Shipment</h2>
+
+    <form method="POST" action="{% url 'track' %}">
+        {% csrf_token %}
+        <input type="text" name="tracking_id" placeholder="Enter Tracking ID" required>
+        <button type="submit">Track</button>
+    </form>
+</div>
+
 </body>
 </html>
